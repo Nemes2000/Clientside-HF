@@ -1,6 +1,6 @@
 # Clientsite-HF
 
-###TRÓNOK HARCA
+### TRÓNOK HARCA
 Készíts egy alkalmazást, mely a népszerű „Trónok harca” könyvsorozat kiadásait és szereplőit mutatja
 be. Az alkalmazás az Ice And Fire API-ra (https://anapioficeandfire.com/) épüljön. A kész alkalmazásnak
 képesnek kell lennie interaktív és ergonomikus módon bejárni a Trónok harca világát, vagyis az
