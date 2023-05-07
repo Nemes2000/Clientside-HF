@@ -1,0 +1,28 @@
+<div class="col-lg-12 panel panel-warning"></div>
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter books..." [(ngModel)]="searchTerm"
+            (keyup.enter)="currentPage=0;getBooks()">
+        <!-- Here comes the list of cards. -->
+        <div class="books-list" *ngIf="!isLoading">
+            <a *ngFor="let book of books " [class.active]="book === selectedBook"
+                (click)="selectedBook = book">
+                <h5 class="text-info">{{book.name}}</h5>
+            </a>
+        </div>
+        <div *ngIf="isLoading">
+        <h4>Loading datas...</h4>
+        </div>
+    </div>
+</div>
+<div class="col-lg-7 panel panel-warning current-card" *ngIf="selectedBook">
+    <!-- Here comes the selected or newly created card's editor / detail. -->
+    <div class="panel-body">
+        <h3>{{selectedBook.name}}</h3>
+        <h3>{{selectedBook.numberOfPages}}</h3>
+        <a *ngFor="let author of selectedBook.authors">{{author}}</a>
+        <h6 *ngFor="let char of selectedBook.characters">{{char}}</h6>
+        <h3>{{selectedBook.publisher}}</h3>
+        <h3>{{selectedBook.country}}</h3>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿<div class="col-lg-5 panel panel-warning">
+    <a *ngFor="let company of companies | async" [class.active]="company === selectedCompany"
+        (click)="selectedCompany = company">
+        <h6 class="text-info">{{company.name}}</h6>
+    </a>
+    
+</div>
+
+<div class="col-lg-7 panel panel-warning current-card" *ngIf="selectedCompany">
+    <!-- Here comes the selected or newly created card's editor / detail. -->
+    <div class="panel-body">
+        <h4 class="text-warning">{{selectedCompany.name}}
+            <i class="glyphicon glyphicon-pencil" (click)="editCompany()" *ngIf="!editing"></i>
+        </h4>
+        <input class="form-control" *ngIf="editing" [(ngModel)]="selectedCompany.name">
+        <h4 *ngIf="creating">Creating a company</h4>
+
+
+        <button class="btn btn-default" *ngIf="editing" (click)="saveCompany(selectedCompany)">Save</button>
+    </div>
+</div>
+<button class="btn btn-info" (click)="createCompany()">Create company</button>

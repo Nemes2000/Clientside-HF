@@ -1,0 +1,32 @@
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Compiled output
+/dist
+/node_modules
+/tmp
+/out-tsc
+
+# Log files
+logs
+*.log
+
+# Environment variables
+.env
+.env.prod
+
+# Dependency lock files
+yarn.lock
+package-lock.json
+
+# TypeScript compilation artifacts
+*.js
+*.js.map
+
+# Miscellaneous files
+.DS_Store
+Thumbs.db
