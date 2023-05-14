@@ -1,0 +1,48 @@
+<h3>Houses</h3>
+<div class="col-lg-12 panel panel-warning"></div>
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter houses..." [(ngModel)]="searchTerm" (keyup.enter)="getHouse()">
+        <button class="btn btn-info" *ngIf="searched" (click)="getAll()">Show all houses</button>
+        <div class="house-list">
+            <a *ngFor="let house of (houses | async)?.results" [class.active]="house === selectedHouse"
+                (click)="selectedHouse = house">
+                <h5 class="text-info">{{house.name}}</h5>
+            </a>
+        </div>
+        <div class="paging">
+            <button class="col-s-2 btn btn-info" [disabled]="currentPage <= 0" (click)="currentPage=0;getHouse()">
+                <p class="pageButton">First page</p>
+            </button>
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage <= 0"
+                (click)="currentPage=currentPage-1;getHouse()">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+            <div class="col-s-2 page-numbers">
+                {{currentPage + 1}}/{{maxPages}}
+            </div>
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage >= maxPages - 1"
+                (click)="currentPage=currentPage+1;getHouse()">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+            <button class="col-s-2 btn btn-info" [disabled]="currentPage >= maxPages - 1"
+                (click)="currentPage=maxPages-1;getHouse()">
+                <p class="pageButton">Last page</p>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="col-lg-7 panel panel-warning current-card" *ngIf="selectedHouse">
+    <div class="panel-body">
+        <h3>Name</h3>
+        <h5>{{selectedHouse.name}}</h5>
+        <h3>Region</h3>
+        <h5>{{selectedHouse.region}}</h5>
+        <h3>Words</h3>
+        <h5 *ngIf="selectedHouse.words!=''">{{selectedHouse.words}}</h5>
+        <h5 *ngIf="selectedHouse.words==''">Dont have</h5>
+    </div>
+    <div class="showMore">
+        <button class="btn btn-info" [routerLink]="['/houses', selectedHouse.name]">Show more</button>
+    </div>
+</div>

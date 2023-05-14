@@ -1,0 +1,42 @@
+<h3>Books</h3>
+<div class="col-lg-12 panel panel-warning"></div>
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter books..." [(ngModel)]="searchTerm" (keyup.enter)="getBooks()">
+        <button class="btn btn-info" *ngIf="searched" (click)="getAll()">Show all characters</button>
+        <div class="book-list">
+            <a *ngFor="let book of (books | async)?.results" [class.active]="book === selectedBook"
+                (click)="selectedBook = book">
+                <h5 class="text-info">{{book.name}}</h5>
+            </a>
+        </div>
+        <div class="paging">
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage <= 0"
+                (click)="currentPage=currentPage-1;getBooks()">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+            <div class="col-s-2 page-numbers">
+                {{currentPage + 1}}/{{maxPages}}
+            </div>
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage >= maxPages - 1"
+                (click)="currentPage=currentPage+1;getBooks()">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="col-lg-7 panel panel-warning current-card" *ngIf="selectedBook">
+    <div class="panel-body">
+        <h3>Name</h3>
+        <h5>{{selectedBook.name}}</h5>
+        <h3>Number of Pages</h3>
+        <h5>{{selectedBook.numberOfPages}}</h5>
+        <h3>Publisher</h3>
+        <h5>{{selectedBook.publisher}}</h5>
+        <h3>Country</h3>
+        <h5>{{selectedBook.country}}</h5>
+    </div>
+    <div class="showMore">
+        <button class="btn btn-info" [routerLink]="['/books', selectedBook.name]">Show more</button>
+    </div>
+</div>

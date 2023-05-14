@@ -1,0 +1,120 @@
+<div class="col-lg-12 panel panel-warning">
+    <h3 class="label-class">{{currentHouse.name}}</h3>
+    <h3 class="label-class" *ngIf="currentHouse.words"><i>{{currentHouse.words}}</i></h3>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Region</h3>
+            <div class="label-class" *ngIf="currentHouse.region">
+                <h4>{{currentHouse.region}}</h4>
+            </div>
+            <div *ngIf="!currentHouse.region">
+                <h4 class="label-class">Unknown</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Seats</h3>
+            <div class="label-class" *ngIf="currentHouse.seats!=''">
+                <h4 *ngFor="let s of currentHouse.seats">{{s}}</h4>
+            </div>
+            <div *ngIf="currentHouse.seats==''">
+                <h4 class="label-class">Unknown</h4>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Current Lord</h3>
+            <div class="label-class" *ngIf="currentHouse.currentLord">
+                <h4 *ngIf="loadingCurrentLord">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(currentLord, 'characters')">{{currentLord}}</a>
+            </div>
+            <div *ngIf="!currentHouse.currentLord">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Heir</h3>
+            <div class="label-class" *ngIf="currentHouse.heir">
+                <h4 *ngIf="loadingHeir">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(heir,'characters')">{{heir}}</a>
+            </div>
+            <div *ngIf="!currentHouse.heir">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Over Lord</h3>
+            <div class="label-class" *ngIf="currentHouse.overlord">
+                <h4 *ngIf="loadingOverLord">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(overlord, 'houses')">{{overlord}}</a>
+            </div>
+            <div class="label-class" *ngIf="!currentHouse.overlord">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Founded</h3>
+            <div class="label-class">
+                <h4>{{currentHouse.founded || 'Unknown'}}</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Fouder</h3>
+            <div class="label-class" *ngIf="currentHouse.founder">
+                <h4 *ngIf="loadingFounder">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(founder, 'characters')">{{founder}}</a>
+            </div>
+            <div *ngIf="!currentHouse.founder">
+                <h4 class="label-class">Unknown</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Died Out</h3>
+            <div class="label-class">
+                <h4>{{currentHouse.diedOut || 'Unknown'}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Ancestral Weapons</h3>
+            <div class="label-class" *ngIf="currentHouse.ancestralWeapons!=''">
+                <h4 *ngFor="let a of currentHouse.ancestralWeapons">{{a}}<br></h4>
+            </div>
+            <div *ngIf="currentHouse.ancestralWeapons==''">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Coat of Arms</h3>
+            <div class="label-class">
+                <h4>{{currentHouse.coatOfArms || 'Dont have'}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-5">
+            <h3 class="label-class">Cadet Branches</h3>
+            <div class="label-class" *ngIf="currentHouse.cadetBranches!=''">
+                <h4 *ngIf="loadingCadetBranches">Loading data...</h4>
+                <a class="d-block" *ngFor="let house of cadetBranches"
+                    (click)="navigateTo(house, 'houses')">{{house}}<br></a>
+            </div>
+            <div *ngIf="currentHouse.cadetBranches==''">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <h3 class="label-class">Sworn Members</h3>
+            <div class="label-class" *ngIf="currentHouse.swornMembers!=''">
+                <h4 *ngIf="loadingSwornMembers">Loading data...</h4>
+                <a class="d-block" *ngFor="let c of swornMembers" (clilk)="navigateTo(c, 'characters')">{{c}}, </a>
+            </div>
+            <div *ngIf="currentHouse.swornMembers==''">
+                <h4 class="label-class">Dont have</h4>
+            </div>
+        </div>
+    </div>
+</div>

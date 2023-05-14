@@ -1,0 +1,50 @@
+<h3>Characters</h3>
+<div class="col-lg-12 panel panel-warning"></div>
+<div class="col-lg-5 panel panel-info">
+    <div class="panel-body">
+        <input class="form-control" placeholder="Filter characters..." [(ngModel)]="searchTerm"
+            (keyup.enter)="getCharacter()">
+        <button class="btn btn-info" *ngIf="searched" (click)="getAll()">Show all characters</button>
+        <div *ngIf="characters.length === 0"> </div>
+        <div class="character-list" *ngFor="let character of characters">
+            <a (click)="selectedCharacter = character">
+                <h5 class="text-info">{{character.name}}</h5>
+            </a>
+        </div>
+        <div class="paging">
+            <button class="col-s-2 btn btn-info" [disabled]="currentPage <= 0" (click)="currentPage=0;getCharacter()">
+                <p class="pageButton">First page</p>
+            </button>
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage <= 0"
+                (click)="currentPage=currentPage-1;getCharacter()">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+            <div class="col-s-2 page-numbers">
+                {{currentPage + 1}}/{{maxPages}}
+            </div>
+            <button class="col-s-1 btn btn-info" [disabled]="currentPage >= maxPages - 1"
+                (click)="currentPage=currentPage+1;getCharacter()">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+            <button class="col-s-2 btn btn-info" [disabled]="currentPage >= maxPages - 1"
+                (click)="currentPage=maxPages-1;getCharacter()">
+                <p class="pageButton">Last page</p>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="col-lg-7 panel panel-warning current-card" *ngIf="selectedCharacter">
+    <div class="panel-body">
+        <h3>Name</h3>
+        <h5>{{selectedCharacter.name}}</h5>
+        <h3>Culture</h3>
+        <h5 *ngIf="selectedCharacter.culture!=''">{{selectedCharacter.culture}}</h5>
+        <h5 *ngIf="selectedCharacter.culture==''">Unknown</h5>
+        <h3>Born</h3>
+        <h5 *ngIf="selectedCharacter.born!=''">{{selectedCharacter.born}}</h5>
+        <h5 *ngIf="selectedCharacter.born==''">Unknown</h5>
+    </div>
+    <div class="showMore">
+        <button class="btn btn-info" [routerLink]="['/characters', selectedCharacter.name]">Show more</button>
+    </div>
+</div>

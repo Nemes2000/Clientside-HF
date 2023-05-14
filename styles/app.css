@@ -2,47 +2,58 @@
     cursor: pointer;
 }
 
-.cards-list a {
-    display: block;
-    padding: 5px 8px;
-    border: 1px solid lightblue;
-    background: #EEEEFF;
-}
-.cards-list a.active h6 {
+.character-list a.active h6 {
     font-weight: bold;
     color: #00AA00;
 }
-.cards-list a h6 {
-    font-size: 1.1em;
+
+.panel-info {
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.company-list a {
-    display: block;
-    padding: 5px 8px;
-    border: 1px solid lightblue;
-    background: #EEEEFF;
-}
-.company-list a.active h6 {
-    font-weight: bold;
-    color: #00AA00;
-}
-.company-list a h6 {
-    font-size: 1.1em;
+.paging, .datas {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.current-card img.profile-picture {
-    max-width: 200px;
-    max-height: 200px;
-}
-button[disabled='disabled'] {
-    color: darkgrey !important;
-}
 .paging .page-numbers {
     text-align: center;
     line-height: 45px;
+    margin: 3px;
 }
 
+.pageButton, .showMore {
+    text-align: center;
+    line-height: 20px;
+    margin-bottom: auto;
+}
 
+.showMore {
+    margin-bottom: 10px;
+}
 
+.showMore a{
+    color: black;
+    font-weight: 200;
+}
 
+.btn {
+    margin: 3px;
+}
 
+.label-class{
+    font-weight: 200;
+    font: bold;
+    text-align: center;
+}
+
+.img {
+    width: 100px;
+    height: 80px;
+}
+
+.form-control{
+    margin-bottom: 15px;
+}

@@ -1,4 +1,135 @@
-<div class="col-lg-5 panel panel-warning">
-    
-    
+<div class="col-lg-12 panel panel-warning"></div>
+<div class="col-lg-12 panel panel-warning">
+    <h3 class="label-class">{{currentCharacter.name}}</h3>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Alias</h3>
+            <div *ngIf="currentCharacter.aliases!=''">
+                <h6 class="label-class" *ngFor="let c of currentCharacter.aliases">{{c}}</h6>
+            </div>
+            <div *ngIf="currentCharacter.aliases==''">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Allegiances</h3>
+            <div class="label-class" *ngIf="currentCharacter.allegiances!=''">
+                <h4 *ngIf="loadingAllegiances">Loading data...</h4>
+                <a class="d-block" *ngFor="let h of allegiances" (click)="navigateTo(h, 'houses')">{{h}}<br></a>
+            </div>
+            <div *ngIf="currentCharacter.allegiances==''">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Titles</h3>
+            <div *ngIf="currentCharacter.titles!=''">
+                <h6 class="label-class" *ngFor="let c of currentCharacter.titles">{{c}}</h6>
+            </div>
+            <div *ngIf="currentCharacter.titles==''">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Culture</h3>
+            <div *ngIf="currentCharacter.culture">
+                <h6 class="label-class">{{currentCharacter.culture}}</h6>
+            </div>
+            <div *ngIf="!currentCharacter.culture">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Born</h3>
+            <div *ngIf="currentCharacter.born">
+                <h6 class="label-class">{{currentCharacter.born}}</h6>
+            </div>
+            <div *ngIf="!currentCharacter.born">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Died</h3>
+            <div *ngIf="currentCharacter.died">
+                <h6 class="label-class">{{currentCharacter.died}}</h6>
+            </div>
+            <div *ngIf="!currentCharacter.died">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Father</h3>
+            <div class="label-class" *ngIf="currentCharacter.father">
+                <h4 *ngIf="loadingFather">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(father, 'characters')">{{father}}</a>
+            </div>
+            <div *ngIf="!currentCharacter.father">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Mother</h3>
+            <div class="label-class" *ngIf="currentCharacter.mother">
+                <h4 *ngIf="loadingMoter">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(mother, 'characters')">{{mother}}</a>
+            </div>
+            <div *ngIf="!currentCharacter.mother">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Spouse</h3>
+            <div class="label-class" *ngIf="currentCharacter.spouse">
+                <h4 *ngIf="loadingSpouse">Loading data...</h4>
+                <a class="d-block" (click)="navigateTo(spouse, 'characters')">{{spouse}}</a>
+            </div>
+            <div *ngIf="!currentCharacter.spouse">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+    </div>
+    <div class="datas">
+        <div class="col-lg-3">
+            <h3 class="label-class">Books</h3>
+            <div class="label-class" *ngIf="currentCharacter.books!=''">
+                <h4 *ngIf="loadingBooks">Loading data...</h4>
+                <a class="d-block" *ngFor="let b of books" (click)="navigateTo(b, 'books')">{{b}}<br></a>
+            </div>
+            <div *ngIf="currentCharacter.books==''">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Pov Books</h3>
+            <div class="label-class" *ngIf="currentCharacter.povBooks!=''">
+                <h4 *ngIf="loadingPovBooks">Loading data...</h4>
+                <a class="d-block" *ngFor="let b of povBooks" (click)="navigateTo(b, 'books')">{{b}}<br></a>
+            </div>
+            <div *ngIf="currentCharacter.povBooks==''">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h3 class="label-class">Tv Series</h3>
+            <div *ngIf="currentCharacter.tvSeries!=''">
+                <h6 class="label-class" *ngFor="let t of currentCharacter.tvSeries">{{t}}</h6>
+            </div>
+            <div *ngIf="currentCharacter.tvSeries==''">
+                <h6 class="label-class">Dont have</h6>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h3 class="label-class">Played By</h3>
+            <div *ngIf="currentCharacter.playedBy!=''">
+                <h6 class="label-class" *ngFor="let p of currentCharacter.playedBy">{{p}}</h6>
+            </div>
+            <div *ngIf="currentCharacter.playedBy==''">
+                <h6 class="label-class">Unknown</h6>
+            </div>
+        </div>
+    </div>
 </div>

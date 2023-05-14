@@ -7,7 +7,7 @@ export interface Book {
     publisher : string;
     country : string;
     mediaType : string;
-    released : string; //special format data time   
+    released : string;
     characters : string[];  //character
     povCharacters : string[]; //character
 }

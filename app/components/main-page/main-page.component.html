@@ -13,7 +13,37 @@
         </div>
     </nav>
     <div class="col-lg-12 panel panel-default">
-        <h3>{{currentPageTitle | async}}</h3>
         <router-outlet></router-outlet>
+        <div class="col-lg-12" *ngIf="isRootSite()">
+            <div class="panel-body">
+                <div class="col-md-4">
+                    <input class="form-control" placeholder="Search by full name..." [(ngModel)]="searchTerm"
+                        (keyup.enter)="getByName()">
+                </div>
+            </div>
+            <div class="datas">
+                <div class="col-md-4">
+                    <h2 class="text-center">Houses</h2>
+                    <h4 class="text-center" *ngIf="house.length==0">-</h4>
+                    <div class="label-class" *ngFor="let h of house">
+                        <a class="d-block" [routerLink]="['/houses', h.name]">{{h.name}}</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center">Characters</h2>
+                    <h4 class="text-center" *ngIf="character.length==0">-</h4>
+                    <div class="label-class" *ngFor="let char of character">
+                        <a class="d-block"  [routerLink]="['/characters', char.name]">{{char.name}}</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center">Books</h2>
+                    <h4 class="text-center" *ngIf="book.length==0">-</h4>
+                    <div class="label-class" *ngFor="let b of book">
+                        <a class="d-block" [routerLink]="['/books', b.name]">{{b.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
