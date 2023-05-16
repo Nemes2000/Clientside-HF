@@ -152,8 +152,11 @@ export class HousePageComponent implements OnInit {
             let response = this.characterService.getSpecificCharacters(this.currentHouse.swornMembers)
             response.forEach(element => {
                 element.subscribe(r => {
-                    this.swornMembers.push(r.json().name)
-                    this.loadingSwornMembers = false
+                    if (r.json().name != '') {
+                        this.swornMembers.push(r.json().name)
+                        this.loadingSwornMembers = false
+                    }
+
                 })
             })
 

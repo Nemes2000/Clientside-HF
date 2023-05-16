@@ -110,7 +110,7 @@
             <h3 class="label-class">Sworn Members</h3>
             <div class="label-class" *ngIf="currentHouse.swornMembers!=''">
                 <h4 *ngIf="loadingSwornMembers">Loading data...</h4>
-                <a class="d-block" *ngFor="let c of swornMembers" (clilk)="navigateTo(c, 'characters')">{{c}}, </a>
+                <a class="d-block" *ngFor="let c of swornMembers" (click)="navigateTo(c, 'characters')">{{c}}, </a>
             </div>
             <div *ngIf="currentHouse.swornMembers==''">
                 <h4 class="label-class">Dont have</h4>
