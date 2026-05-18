@@ -1,7 +1,7 @@
 # Clientsite-HF
 
 The project was made as a home work. The project developed a base Angular web application.
-Thse specification was the following:
+The specification was the following:
 
 **GAME OF THRONES**
 _Create an app that showcases the editions and characters of the popular "Game of Thrones" book series.
